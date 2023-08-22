@@ -1,0 +1,16 @@
+--0821메모장--
+<JavaEE>
+
+mysql> 
+create table board(
+    -> board_idx int primary key auto_increment
+    -> , title varchar(100)
+    -> , writer varchar(20)
+    -> , regdate timestamp default now()
+    -> , hit int default 0
+    -> , content text
+    -> ) default character set utf8;
+
+String sql="insert into board(title, writer, content) values(?, ?, ?)";
+
+

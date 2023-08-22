@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQLBoard">
+
+<!-- 
+Mybatics 프레임웤을 가리켜 SQL Mapper라고 하며, Hibernate를 가리켜 ORM이라고 함
+
+ -->
+ 
+	<insert id="insert" parameterType="org.sp.mybatisapp.domain.Board">
+		insert into board(title, writer, content) values(#{title}, #{writer}, #{content})
+	</insert>
+	
+	<!-- 레코드 1건과 자바 객체 인스턴스 1개를 알아서 짝 지어준다고 하여, SQL Mapper -->
+	<select id="selectAll" resultType="org.sp.mybatisapp.domain.Board">
+		select * from board order by board_idx desc
+	</select>
+	
+	<select id="select" parameterType="int" resultType="org.sp.mybatisapp.domain.Board">
+		select 
+		board_idx, title, writer, content, regdate, hit
+		from board where board_idx=#{board_idx}
+	</select>
+	
+</mapper>
